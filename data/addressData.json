@@ -1,0 +1,46 @@
+{
+  "status": 0,
+  "message": "",
+  "result": [
+    {
+      "addressId": "000001",
+      "username": "hao",
+      "streetName": "苏州科灵路78号",
+      "postCode": 10001,
+      "tel": "124123122",
+      "isDefault": true
+    },
+    {
+      "addressId": "000002",
+      "username": "zheng",
+      "streetName": "苏州园区太湖大道34号",
+      "postCode": 10001,
+      "tel": "124512312",
+      "isDefault": false
+    },
+    {
+      "addressId": "000003",
+      "username": "dong",
+      "streetName": "苏州星湖街108号",
+      "postCode": 10001,
+      "tel": "12345125",
+      "isDefault": false
+    },
+    {
+      "addressId": "000004",
+      "username": "wang",
+      "streetName": "苏州相城大道112号",
+      "postCode": 10001,
+      "tel": "19218212345",
+      "isDefault": false
+    },
+    {
+      "addressId": "000005",
+      "username": "lili",
+      "streetName": "苏州相城245号",
+      "postCode": 10001,
+      "tel": "123124124",
+      "isDefault": false
+    }
+  ]
+}

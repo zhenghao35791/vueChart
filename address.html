@@ -55,11 +55,14 @@
             <div class="addr-list-wrap">
                 <div class="addr-list">
                     <ul>
-                        <li>
+                        <li v-for="(address,index) in limitAddressList"
+                                @click="currentIndex=index"
+                                v-bind:class="{'check':index==currentIndex}"
+                                >
                             <dl>
-                                <dt>haozheng</dt>
-                                <dd class="address">苏州市科灵路78号</dd>
-                                <dd class="tel">25540</dd>
+                                <dt >{{address.username}}</dt>
+                                <dd class="address">{{address.streetName}}</dd>
+                                <dd class="tel">{{address.tel}}</dd>
                             </dl>
                             <div class="addr-opration addr-edit">
                                 <a href="javascript:;" class="addr-edit-btn">
@@ -68,16 +71,24 @@
                             </div>
                             <div class="addr-opration addr-del">
                                 <a href="javascript:;" class="addr-del-btn">
-                                    <svg class="icon icon-del"><use xlink:href="#icon-del"></use></svg>
+                                    <svg class="icon icon-del">
+                                        <use xlink:href="#icon-del"></use>
+                                    </svg>
                                 </a>
                             </div>
                             <div class="addr-opration addr-set-default">
-                                <a href="javascript:;" class="addr-set-default-btn"><i>设为默认</i></a>
+                                <a href="javascript:;"
+                                   class="addr-set-default-btn"
+                                   @click="setDefalutProduct(address)"
+                                   v-show="!address.isDefault">
+                                    <i>设为默认</i>
+                                </a>
                             </div>
-                            <div class="addr-opration addr-default">默认地址</div>
+                            <div class="addr-opration addr-default"
+                                    v-show="address.isDefault">默认地址</div>
                         </li>
 
-                        <li class="addr-new">
+                        <li class="addr-new" @click="num=addressList.length">
                             <div class="add-new-inner">
                                 <i class="icon-add">
                                     <svg class="icon icon-add"><use xlink:href="#icon-add"></use></svg>
@@ -89,7 +100,8 @@
                 </div>
 
                 <div class="shipping-addr-more">
-                    <a class="addr-more-btn up-down-btn" href="javascript:;">
+                    <a class="addr-more-btn up-down-btn" href="javascript:;"
+                            @click="num=addressList.length">
                         more
                         <i class="i-up-down">
                             <i class="i-up-down-l"></i>
@@ -106,11 +118,14 @@
             <div class="shipping-method-wrap">
                 <div class="shipping-method">
                     <ul>
-                        <li class="check">
+                        <li
+                            v-bind:class="{'check':shippingMethod==1}"
+                            @click="shippingMethod=1">
                             <div class="name">标准配送</div>
                             <div class="price">免费</div>
                         </li>
-                        <li>
+                        <li v-bind:class="{'check':shippingMethod==2}"
+                            @click="shippingMethod=2">
                             <div class="name">高级配送</div>
                             <div class="price">50元</div>
                         </li>
@@ -123,5 +138,8 @@
             </div>
         </div>
     </div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/vue-resource/dist/vue-resource.js"></script>
+    <script src="js/address.js"></script>
 </body>
 </html>
