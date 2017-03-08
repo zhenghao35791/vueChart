@@ -67,7 +67,11 @@
                             <div class="cart-tab-1">
                                 <!-- 单选 -->
                                 <div class="cart-item-check">
-                                    <a href="javascipt:;" class="item-check-btn">
+                                    <a href="javascipt:;"
+                                       class="item-check-btn"
+                                       v-bind:class="{'check': product.checked}"
+                                       @click="selectProduct(product)"
+                                            >
                                         <svg class="icon icon-ok"><use xlink:href="#icon-ok"></use></svg>
                                     </a>
                                 </div>
@@ -89,15 +93,15 @@
                             </div>
                             <!-- 单价 -->
                             <div class="cart-tab-2">
-                                <div class="item-price">{{product.productPrice}}</div>
+                                <div class="item-price">{{product.productPrice | changeMoneyFilter}}</div>
                             </div>
                             <div class="cart-tab-3">
                                 <div class="item-quantity">
                                     <div class="select-self select-self-open">
                                         <div class="quentity">
-                                            <a href="javascript:;">-</a>
-                                            <input type="text" disabled value="1">
-                                            <a href="javascript:;">+</a>
+                                            <a href="javascript:;" @click="changeProductNumber(product,-1)">-</a>
+                                            <input type="text" disabled value="1" v-model="product.productQuentity">
+                                            <a href="javascript:;" @click="changeProductNumber(product,1)">+</a>
                                         </div>
                                     </div>
                                     <div class="item-stock">有货</div>
@@ -105,7 +109,7 @@
                             </div>
                             <div class="cart-tab-4">
                                 <!-- 总金额 -->
-                                <div class="item-price-total"></div>
+                                <div class="item-price-total">{{product.productPrice * product.productQuentity | changeMoneyFilter}}</div>
                             </div>
                             <!-- 删除功能 -->
                             <div class="cart-tab-5">
@@ -125,13 +129,13 @@
                 <div class="cart-foot-l">
                     <div class="item-all-check">
                         <a href="javascipt:;">
-                            <span class="item-check-btn">
+                            <span class="item-check-btn"  v-bind:class="{'check':isCheckAll}" @click="selectAll(true)">
                                 <svg class="icon icon-ok"><use xlink:href="#icon-ok"></use></svg>
                             </span>
-                            <span>全选</span>
+                            <span  @click="selectAll(true)">全选</span>
                         </a>
                     </div>
-                    <div class="item-all-del">
+                    <div class="item-all-del" @click="selectAll(false)">
                         <a href="javascipt:;" class="item-del-btn">
                             取消全选
                         </a>
@@ -139,7 +143,7 @@
                 </div>
                 <div class="cart-foot-r">
                     <div class="item-total">
-                        商品总金额: <span class="total-price"></span>
+                        商品总金额: <span class="total-price">{{computedPrice}}</span>
                     </div>
                     <div class="next-btn-wrap">
                         <a href="address.html" class="btn btn--red">结账</a>
