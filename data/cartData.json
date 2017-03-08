@@ -6,26 +6,39 @@
       {
         "productId": "000001",
         "productName": "iPhone 7",
-        "productPrice": 19,
+        "productPrice": 5600,
         "productQuentity": 1,
-        "productImage": "img/goods-1.png",
+        "productImage": "img/good-1.png",
         "parts": [
           {
             "partsId": "1001",
-            "partName": "打火机"
+            "partName": "苹果专用保护膜"
           }
         ]
       },
       {
         "productId": "000002",
         "productName": "MacBook Pro",
-        "productPrice": 19,
+        "productPrice": 8550,
         "productQuentity": 1,
-        "productImage": "img/goods-2.png",
+        "productImage": "img/good-2.png",
         "parts": [
           {
             "partsId": "1002",
-            "partName": "吸管"
+            "partName": "苹果鼠标"
+          }
+        ]
+      },
+      {
+        "productId": "000003",
+        "productName": "Ipad Pro",
+        "productPrice": 1024,
+        "productQuentity": 1,
+        "productImage": "img/good-3.png",
+        "parts": [
+          {
+            "partsId": "1003",
+            "partName": "苹果蓝牙耳机"
           }
         ]
       }

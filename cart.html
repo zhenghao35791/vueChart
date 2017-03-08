@@ -62,7 +62,7 @@
                             <li>编辑</li>
                         </ul>
                     </div>
-                    <ul class="cart-item-list">
+                    <ul class="cart-item-list" v-for="product in productList">
                         <li>
                             <div class="cart-tab-1">
                                 <!-- 单选 -->
@@ -73,23 +73,23 @@
                                 </div>
                                 <!-- 商品图片 -->
                                 <div class="cart-item-pic">
-                                    <img alt="烟">
+                                    <img alt="烟" v-bind:src="product.productImage">
                                 </div>
                                 <!-- 商品名称 -->
                                 <div class="cart-item-title">
-                                    <div class="item-name"></div>
+                                    <div class="item-name">{{product.productName}}</div>
                                 </div>
                                 <!-- 赠品 -->
                                 <div class="item-include">
-                                    <dl>
+                                    <dl v-for="part in product.parts">
                                         <dt>赠送:</dt>
-                                        <dd>打火机</dd>
+                                        <dd>{{part.partName}}</dd>
                                     </dl>
                                 </div>
                             </div>
                             <!-- 单价 -->
                             <div class="cart-tab-2">
-                                <div class="item-price">18</div>
+                                <div class="item-price">{{product.productPrice}}</div>
                             </div>
                             <div class="cart-tab-3">
                                 <div class="item-quantity">
@@ -139,7 +139,7 @@
                 </div>
                 <div class="cart-foot-r">
                     <div class="item-total">
-                        Item total: <span class="total-price"></span>
+                        商品总金额: <span class="total-price"></span>
                     </div>
                     <div class="next-btn-wrap">
                         <a href="address.html" class="btn btn--red">结账</a>
@@ -166,5 +166,8 @@
         </div>
     </div>
     <div class="mdoverlay" id="showOverLay"></div>
+    <script src="node_modules/vue/dist/vue.js"></script>
+    <script src="node_modules/vue-resource/dist/vue-resource.js"></script>
+    <script src="js/cart.js"></script>
 </body>
 </html>
