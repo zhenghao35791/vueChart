@@ -2,11 +2,13 @@
  * Created by zhenghao on 2017/3/8.
  */
 new Vue({
-  el:'.container',
+  el:'#app',
   data: {
     productList:[],
     isCheckAll:false,
-    totalPrice:0
+    totalPrice:0,
+    deleteFlag:false,
+    deleteItem:null
   },
   mounted: function(){
     this.$nextTick(function(){
@@ -27,6 +29,7 @@ new Vue({
       _this.totalPrice = 0;
       _this.productList.forEach(function(item,index){
         if(item.checked){
+          //通过-0，把string转化为数字，防止totalPrice的值为NaN
           _this.totalPrice += item.productPrice * item.productQuentity -0;
         }
       });
@@ -91,6 +94,20 @@ new Vue({
         });
         _this.isCheckAll = false;
       }
+    },
+    deleteProductModel:function(product){
+      this.deleteFlag = true;
+      this.deleteItem = product;
+    },
+    deleteProduct: function(){
+      var _this = this;
+      //取得要删除的item在所有商品list里面的index
+      var deleteIndex = _this.productList.indexOf(_this.deleteItem);
+      //用原生js方法slice删除这个item
+      _this.productList.splice(deleteIndex,1);
+      //删除完毕后重置flag，清空要删除的item
+      _this.deleteFlag = false;
+      _this.deleteItem = null;
     }
   }
 });

@@ -37,6 +37,15 @@ new Vue({
       });
       //设定选中的item为默认
       address.isDefault = true;
+    },
+    moreAddress: function(){
+      var _this = this;
+      if(_this.num == _this.addressList.length){
+        _this.num =3;
+      }
+      else{
+        _this.num=_this.addressList.length;
+      }
     }
   }
 });
